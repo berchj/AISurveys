@@ -20,7 +20,7 @@ class AISurveys_Settings
         if (isset($_POST['aic_surveys_nonce']) && wp_verify_nonce($_POST['aic_surveys_nonce'], 'aic_surveys_settings_nonce')) {
             // Procesar los datos del formulario
             update_option('AISurveys_api_key', sanitize_text_field($_POST['api_key']));
-
+            update_option('AISurveys_purpose', sanitize_text_field($_POST['purpose']));
             // Obtener preguntas existentes
             $questions = get_option('AISurveys_questions', array());
 
@@ -50,6 +50,7 @@ class AISurveys_Settings
     }
 
     $api_key = get_option('AISurveys_api_key', '');
+    $purpose = get_option( 'AISurveys_purpose', '' );
     $questions = get_option('AISurveys_questions', array());
 
     // Mostrar formulario y preguntas en la página de administración

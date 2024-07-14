@@ -4,7 +4,7 @@ zip:
 
 # Run locally
 test: 
-	npx wp-env start
+	npx wp-env start --xdebug
 
 # Clean all environments
 clear:
