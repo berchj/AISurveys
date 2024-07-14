@@ -27,10 +27,24 @@ class AISurveys_Settings
             // Obtener nuevas preguntas del formulario
             $new_questions = isset($_POST['questions']) ? $_POST['questions'] : array();
 
+            // Obtener las preguntas marcadas para eliminación
+            $deleted_questions = isset($_POST['deleted_questions']) ? $_POST['deleted_questions'] : array();
+
+            // Marcar las preguntas a eliminar en un array
+            $questions_to_delete = array_intersect($questions, $deleted_questions);
+
+            // Eliminar las preguntas marcadas para eliminación
+            foreach ($questions_to_delete as $deleted_question) {
+                $question_key = array_search($deleted_question, $questions);
+                if ($question_key !== false) {
+                    unset($questions[$question_key]);
+                }
+            }
+
             // Combinar preguntas existentes con las nuevas preguntas
             $questions = array_merge($questions, $new_questions);
 
-            // Guardar todas las preguntas
+            // Guardar todas las preguntas actualizadas
             update_option('AISurveys_questions', $questions);
         }
     }
