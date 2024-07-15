@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "composer": "wp-env run cli --env-cwd=wp-content/plugins/ai-surveys composer",
+    "composer:tests-cli": "wp-env run tests-cli --env-cwd=wp-content/plugins/ai-surveys composer",
+    "test:unit": "wp-env run tests-cli --env-cwd=wp-content/plugins/ai-surveys ./vendor/bin/phpunit "
   },
   "author": "",
   "license": "ISC",

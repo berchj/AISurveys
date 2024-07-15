@@ -2,7 +2,7 @@
 
 class AISurveys_API
 {
-    public static function call($question, $api_key ,$questions, $purpose)
+    public static function call($api_key ,$questions, $purpose)
     {
         // URL para la llamada API
         $url = 'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=' . $api_key;
@@ -76,15 +76,13 @@ class AISurveys_API
             wp_die('Form data is missing or invalid.');
         }
 
-        $responses = array_map('sanitize_text_field', $_POST['questions']);
+        $questions = array_map('sanitize_text_field', $_POST['questions']);
 
-        
         $api_key = get_option('AISurveys_api_key', '');
 
-        // Llamar a la función para hacer la petición HTTP
-        $question_text = 'Aquí puedes incluir el formato que deseas. Ejemplo: "Responde las siguientes preguntas: ' . json_encode($responses) . '"';
-
-        $result = self::call($question_text, $api_key);
+        $purpose = get_option('AISurveys_purpose', '');
+        
+        $result = self::call($api_key,$questions,$purpose);
 
         if (is_wp_error($result)) {
             wp_die('API Error: ' . $result->get_error_message());

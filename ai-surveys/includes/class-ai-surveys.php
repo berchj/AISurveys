@@ -1,14 +1,19 @@
 <?php
 
+
 class AISurveys
 {
-
     private static $instance = null;
 
     private function __construct()
     {
         $this->includes();
         $this->init_hooks();
+    }
+
+
+    public static function createInstance() {
+        return new self();
     }
 
     public static function instance()
@@ -21,8 +26,8 @@ class AISurveys
 
     private function includes()
     {
-        require_once plugin_dir_path(__FILE__) . 'class-ai-surveys-settings.php';
-        require_once plugin_dir_path(__FILE__) . 'class-ai-surveys-api.php';
+        require_once plugin_dir_path(__DIR__) . 'includes/class-ai-surveys-settings.php';
+        require_once plugin_dir_path(__DIR__) . 'includes/class-ai-surveys-api.php';
     }
 
     private function init_hooks()

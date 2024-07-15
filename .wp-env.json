@@ -1,3 +1,10 @@
 {
-  "plugins": ["./ai-surveys/"]
+  "core": "WordPress/WordPress",
+  "phpVersion": "7.4",
+  "plugins": ["./ai-surveys/"],
+  "env": {
+    "tests": {
+      "phpVersion": "8.2"
+    }
+  }
 }
