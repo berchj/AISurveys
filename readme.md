@@ -34,15 +34,22 @@ Go to the project directory
   cd AISurveys
 ```
 
+### environment commands 
+
 Install dependencies
 
 ```bash
   npm i
 ```
 
-### environment commands 
+Start local environment (this install all dependencies including wordpress and composer /phpunit for unit tests)
 
-Start local environment
+```bash
+  make start
+```
+
+
+Run all unit test in ai-surveys/tests directory (see makefile to the entire command config)
 
 ```bash
   make test
@@ -71,6 +78,12 @@ Make .zip to upload to wordpress
 ```bash
   make zip
 ```
+
+### Unit tests 
+
+This project is configured to accept unit tests written in the ai-entries/tests directory
+
+To know more about how phpunit works: https://phpunit.de/manual/6.5/en/textui.html
 
 ### About wordpress/env : 
 
